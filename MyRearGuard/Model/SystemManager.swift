@@ -60,7 +60,6 @@ class SystemManager
                                 if(child == secret){
                                     self.db?.child("actives").child("active").child(key).child("working").setValue("true")
                                     ref?.removeAllObservers()
-                                    
                                 }
                             }
                         }
@@ -85,7 +84,6 @@ class SystemManager
                                 if(child == secret){
                                     self.db?.child("actives").child("active").child(key).child("working").setValue("false")
                                     ref?.removeAllObservers()
-                                    
                                 }
                             }
                         }
