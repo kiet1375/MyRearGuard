@@ -87,16 +87,20 @@ class AuthenticationController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let fileName = "email"
+        
         var message = ""
         
-        let locationURL = try! Bundle.main.path(forResource: "email", ofType: "txt")
+        let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         
+        let fileURL = DocumentDirURL.appendingPathComponent(fileName).appendingPathExtension("txt")
+        //var readString = "" // Used to store the file contents
         do {
             // Read the file contents
-            message = try String(contentsOfFile: locationURL!)
-            
+            message = try String(contentsOf: fileURL)
+
         } catch let error as NSError {
-            print("Failed reading from URL: \(String(describing: locationURL)), Error: " + error.localizedDescription)
+            print("Failed reading from URL: \(fileURL), Error: " + error.localizedDescription)
         }
         
         if(message != ""){

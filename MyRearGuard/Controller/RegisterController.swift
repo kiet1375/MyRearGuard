@@ -33,7 +33,6 @@ class RegisterController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         email.text = secret
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
