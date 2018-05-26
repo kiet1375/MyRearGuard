@@ -19,7 +19,6 @@
 		212706AB20A6AD0F00C98F5E /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 212706AA20A6AD0F00C98F5E /* RegisterController.swift */; };
 		215A7B9F20AC5E0100AB4CCF /* Medic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 215A7B9E20AC5E0100AB4CCF /* Medic.swift */; };
 		2185F58620B8D6D700C834A5 /* SystemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185F58520B8D6D700C834A5 /* SystemManager.swift */; };
-		2185F58820B8D86F00C834A5 /* Patient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2185F58720B8D86F00C834A5 /* Patient.swift */; };
 		21E15DEF20B696420033788A /* email.txt in Resources */ = {isa = PBXBuildFile; fileRef = 21E15DEE20B696420033788A /* email.txt */; };
 		21E230DD20B502590078A0B0 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21E230DC20B502590078A0B0 /* MapKit.framework */; };
 		72F820EE4671F3E336340DB9 /* Pods_MyRearGuard.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5DC60D5CF5198F8F4FD11329 /* Pods_MyRearGuard.framework */; };
@@ -40,7 +39,6 @@
 		212706AA20A6AD0F00C98F5E /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
 		215A7B9E20AC5E0100AB4CCF /* Medic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Medic.swift; sourceTree = "<group>"; };
 		2185F58520B8D6D700C834A5 /* SystemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemManager.swift; sourceTree = "<group>"; };
-		2185F58720B8D86F00C834A5 /* Patient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Patient.swift; sourceTree = "<group>"; };
 		21E15DEE20B696420033788A /* email.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = email.txt; sourceTree = "<group>"; };
 		21E230DC20B502590078A0B0 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		5DC60D5CF5198F8F4FD11329 /* Pods_MyRearGuard.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyRearGuard.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -120,7 +118,6 @@
 				215A7B9E20AC5E0100AB4CCF /* Medic.swift */,
 				211B000220B7044900299D04 /* Incident.swift */,
 				2185F58520B8D6D700C834A5 /* SystemManager.swift */,
-				2185F58720B8D86F00C834A5 /* Patient.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -272,7 +269,6 @@
 			files = (
 				215A7B9F20AC5E0100AB4CCF /* Medic.swift in Sources */,
 				211B000320B7044900299D04 /* Incident.swift in Sources */,
-				2185F58820B8D86F00C834A5 /* Patient.swift in Sources */,
 				212706AB20A6AD0F00C98F5E /* RegisterController.swift in Sources */,
 				2127069420A6A7C700C98F5E /* AuthenticationController.swift in Sources */,
 				2185F58620B8D6D700C834A5 /* SystemManager.swift in Sources */,

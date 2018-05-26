@@ -49,6 +49,7 @@ class HomeController: UIViewController {
             let mapItem = MKMapItem(placemark: placeMark)
             mapItem.name = "Patient"
             mapItem.openInMaps(launchOptions: options)
+            
         }
         
     }

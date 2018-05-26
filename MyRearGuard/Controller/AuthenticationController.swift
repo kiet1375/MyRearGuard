@@ -94,7 +94,7 @@ class AuthenticationController: UIViewController {
         let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
         
         let fileURL = DocumentDirURL.appendingPathComponent(fileName).appendingPathExtension("txt")
-        //var readString = "" // Used to store the file contents
+
         do {
             // Read the file contents
             message = try String(contentsOf: fileURL)
