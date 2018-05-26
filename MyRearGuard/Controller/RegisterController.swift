@@ -24,7 +24,7 @@ class RegisterController: UIViewController {
     
     @IBAction func register(_ sender: Any)
     {
-        systemManager.storeEmail(secret: secret!)
+        self.systemManager.storeEmail(secret: secret!)
         self.systemManager.addMedicDetails(firstName: self.firstName.text!, lastName: self.lastName.text!, email: self.email.text!)
         self.systemManager.addActive(secret: self.secret!)
         self.performSegue(withIdentifier: "registered", sender: self)

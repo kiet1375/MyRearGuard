@@ -10,12 +10,20 @@ import Foundation
 
 class Medic
 {
-    var indexNumber: Int
+    var index: Int
     var email: String
     
-    init()
+    init() // default constructor
     {
-        self.indexNumber = 0
+        self.index = 0
         self.email = ""
     }
+    
+    init(email: String, index: Int)
+    {
+        self.email = email
+        self.index = index
+    }
+    
+    
 }

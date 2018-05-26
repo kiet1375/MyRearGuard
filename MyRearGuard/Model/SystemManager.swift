@@ -50,7 +50,6 @@ class SystemManager
     {
         db = Database.database().reference()
         let ref = db?.child("actives").child("active")
-        print("Starting observing");
         ref?.observe(.value, with: { (snapshot: DataSnapshot!) in
             self.handle = ref?.observe(.childAdded, with: { (snapshot) in
                 if let key = snapshot.key as? String {
@@ -76,7 +75,6 @@ class SystemManager
     {
         db = Database.database().reference()
         let ref = db?.child("actives").child("active")
-        print("Starting observing");
         ref?.observe(.value, with: { (snapshot: DataSnapshot!) in
             self.handle = ref?.observe(.childAdded, with: { (snapshot) in
                 if let key = snapshot.key as? String {
@@ -85,7 +83,7 @@ class SystemManager
                             if(data == "email"){
                                 let p = snapshot.value as! String
                                 if(p == secret){
-                                    self.db?.child("actives").child("active").child(key).child("working").setValue("true")
+                                    self.db?.child("actives").child("active").child(key).child("working").setValue("false")
                                     ref?.removeAllObservers()
                                     
                                 }
@@ -114,7 +112,7 @@ class SystemManager
                             let child = snapshot.value as! String
                             if(count < 1)
                             {
-                                DispatchQueue.main.async {
+                                DispatchQueue.main.async { 
                                     if(data == "date"){
                                         incident.date = child
                                     }
@@ -165,11 +163,11 @@ class SystemManager
         let ref = db?.child("medics").child("medic").queryLimited(toLast: 1)
         self.handle = ref?.observe(.childAdded, with: { (snapshot) in
             if let key = snapshot.key as? String{
-                medic.indexNumber = Int(key)!
-                medic.indexNumber = medic.indexNumber+1
-                self.db?.child("medics").child("medic").child("\(String(medic.indexNumber))").child("email").setValue(email)
-                self.db?.child("medics").child("medic").child("\(String(medic.indexNumber))").child("first name").setValue(firstName)
-                self.db?.child("medics").child("medic").child("\(String(medic.indexNumber))").child("last name").setValue(lastName)
+                medic.index = Int(key)!
+                medic.index = medic.index+1
+                self.db?.child("medics").child("medic").child("\(String(medic.index))").child("email").setValue(email)
+                self.db?.child("medics").child("medic").child("\(String(medic.index))").child("first name").setValue(firstName)
+                self.db?.child("medics").child("medic").child("\(String(medic.index))").child("last name").setValue(lastName)
                 ref?.removeAllObservers()
             }
         })
@@ -182,10 +180,10 @@ class SystemManager
         self.handle = ref?.observe(.childAdded, with: { (snapshot) in
             if let key = snapshot.key as? String{
                 let medic = Medic()
-                medic.indexNumber = Int(key)!
-                medic.indexNumber = medic.indexNumber+1
-                self.db?.child("actives").child("active").child("\(String(medic.indexNumber))").child("email").setValue(secret)
-                self.db?.child("actives").child("active").child("\(String(medic.indexNumber))").child("working").setValue(false)
+                medic.index = Int(key)!
+                medic.index = medic.index+1
+                self.db?.child("actives").child("active").child("\(String(medic.index))").child("email").setValue(secret)
+                self.db?.child("actives").child("active").child("\(String(medic.index))").child("working").setValue(false)
                 ref?.removeAllObservers()
             }
         })
