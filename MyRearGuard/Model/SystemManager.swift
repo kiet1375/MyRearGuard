@@ -56,8 +56,8 @@ class SystemManager
                     self.handle = self.db?.child("actives/active").child(key).observe(.childAdded, with: { (snapshot) in
                         if let data = snapshot.key as? String {
                             if(data == "email"){
-                                let p = snapshot.value as! String
-                                if(p == secret){
+                                let child = snapshot.value as! String
+                                if(child == secret){
                                     self.db?.child("actives").child("active").child(key).child("working").setValue("true")
                                     ref?.removeAllObservers()
                                     
@@ -81,8 +81,8 @@ class SystemManager
                     self.handle = self.db?.child("actives/active").child(key).observe(.childAdded, with: { (snapshot) in
                         if let data = snapshot.key as? String {
                             if(data == "email"){
-                                let p = snapshot.value as! String
-                                if(p == secret){
+                                let child = snapshot.value as! String
+                                if(child == secret){
                                     self.db?.child("actives").child("active").child(key).child("working").setValue("false")
                                     ref?.removeAllObservers()
                                     
@@ -183,7 +183,7 @@ class SystemManager
                 medic.index = Int(key)!
                 medic.index = medic.index+1
                 self.db?.child("actives").child("active").child("\(String(medic.index))").child("email").setValue(secret)
-                self.db?.child("actives").child("active").child("\(String(medic.index))").child("working").setValue(false)
+                self.db?.child("actives").child("active").child("\(String(medic.index))").child("working").setValue("false")
                 ref?.removeAllObservers()
             }
         })
