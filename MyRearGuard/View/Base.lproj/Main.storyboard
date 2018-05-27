@@ -70,13 +70,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FYE-hc-TJm">
-                                <rect key="frame" x="28" y="525" width="314" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -93,7 +86,6 @@
                         <outlet property="email" destination="Qy8-8D-tDA" id="eiE-Sy-0V5"/>
                         <outlet property="errorMessage" destination="xSw-oh-cVE" id="HTJ-LH-raW"/>
                         <outlet property="password" destination="M0p-VM-ade" id="bzS-wu-2CO"/>
-                        <outlet property="secret" destination="FYE-hc-TJm" id="U3y-Pq-og7"/>
                         <outlet property="type" destination="ly1-WI-cqo" id="5XV-mu-AfA"/>
                         <segue destination="8YA-8L-8JE" kind="show" identifier="Home" id="fGZ-ir-2XV"/>
                         <segue destination="BcW-Fd-QBj" kind="show" identifier="register" id="kbg-4h-0cj"/>
@@ -278,7 +270,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="kdb-td-wlq"/>
+        <segue reference="fGZ-ir-2XV"/>
         <segue reference="wt7-ck-rQh"/>
     </inferredMetricsTieBreakers>
 </document>

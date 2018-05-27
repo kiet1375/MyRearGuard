@@ -21,14 +21,9 @@ class MapController: UIViewController, MKMapViewDelegate {
     var handle:DatabaseHandle?
     
     
-    @IBAction func mapping(_ sender: AnyObject)
-    {
-        self.email.text = self.secret
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.email.text = secret
     }
     
 

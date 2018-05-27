@@ -15,7 +15,7 @@ var test = ""
 
 class AuthenticationController: UIViewController {
     
-    var secretText: String?
+    var secret: String?
     var userID: String!
     let medic = Medic()
     let systemManager = SystemManager()
@@ -24,13 +24,12 @@ class AuthenticationController: UIViewController {
     @IBOutlet weak var errorMessage: UILabel!
     @IBOutlet weak var email: UITextField!
     @IBOutlet weak var password: UITextField!
-    @IBOutlet weak var secret: UILabel!
     
     var db: DatabaseReference?
     var handle:DatabaseHandle?
 
     
-   
+    //function authenticates a medic sign in or register a new user
     @IBAction func authenticationManager(_ sender: Any)
     {
         if(self.email != nil && self.password != nil){
@@ -39,7 +38,7 @@ class AuthenticationController: UIViewController {
                     (user, error) in
                     if(user != nil){
                         self.userID = user?.uid
-                        self.systemManager.isWorking(secret: self.email.text!)
+                        self.systemManager.isWorking(secret: self.email.text!) // set isWorking tree to true
                         KeychainWrapper.standard.set(self.userID, forKey: "uid")
                         self.performSegue(withIdentifier: "Home", sender: self)
                     }
@@ -66,13 +65,13 @@ class AuthenticationController: UIViewController {
         }
     }
     
-    
+    //prepare to send invisible text to the desired controller
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
         if(type.selectedSegmentIndex == 0){
             let home = segue.destination as! HomeController
             
-            if(secretText != ""){
+            if(secret != ""){
                 home.secret = email.text
             }
         }else{
@@ -84,28 +83,32 @@ class AuthenticationController: UIViewController {
         }
     }
     
+    //configuration file for authentication. Each download will only allow one regisration.
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         let fileName = "email"
         
         var message = ""
         
-        let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-        
-        let fileURL = DocumentDirURL.appendingPathComponent(fileName).appendingPathExtension("txt")
-
-        do {
-            // Read the file contents
-            message = try String(contentsOf: fileURL)
-
-        } catch let error as NSError {
-            print("Failed reading from URL: \(fileURL), Error: " + error.localizedDescription)
-        }
-        
-        if(message != ""){
-            //secret.text = message
-            //type.removeSegment(at: 1, animated: false)
+        if(message == ""){
+            let DocumentDirURL = try! FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
+            
+            let fileURL = DocumentDirURL.appendingPathComponent(fileName).appendingPathExtension("txt")
+            
+            do {
+                // Read the file contents
+                message = try String(contentsOf: fileURL)
+                
+            } catch let error as NSError {
+                print("Failed reading from URL: \(fileURL), Error: " + error.localizedDescription)
+            }
+            
+            if(message != ""){
+                secret = message
+                type.removeSegment(at: 1, animated: false)
+            }
         }
     }
 

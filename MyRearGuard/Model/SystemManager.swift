@@ -17,6 +17,7 @@ class SystemManager
     
     init(){} //default constructor
     
+    // Create authentication configuration file and name it email
     func storeEmail(secret: String)-> Void
     {
         // Save data to file
@@ -46,6 +47,7 @@ class SystemManager
         }
     }
     
+    // Function sets the active table child is working to true on sign in
     func isWorking(secret: String) -> Void
     {
         db = Database.database().reference()
@@ -94,7 +96,7 @@ class SystemManager
         })
     }
     
-    
+    // Function instantiates an incident branch and returns an incident to the caller. Snapshots are acync methods.
     func getIncident(group: DispatchGroup) -> Incident
     {
         let incident = Incident() // default constructor
@@ -110,8 +112,8 @@ class SystemManager
                             let child = snapshot.value as! String
                             if(count < 1)
                             {
-                                DispatchQueue.main.async { 
-                                    if(data == "date"){
+                                DispatchQueue.main.async { //queue data that is waiting for snapshot to return
+                                    if(data == "date"){    //values
                                         incident.date = child
                                     }
                                     if(data == "latitude"){
@@ -129,16 +131,19 @@ class SystemManager
                                     if(data == "medic"){
                                         incident.medic = child
                                         
-                                        if(child == "" && count == 0){
-                                            count = count+1
-                                        }
+                                        if(child == "" && count == 0){ //counter used to complete only the first
+                                            count = count+1            // child with medic email value that is
+                                        }                              // null
                                     }
                                     if(data == "patient"){
                                         incident.patient = child
                                     }
+                                    //if all values in incident is set, finalized the incident with the medic
+                                    //email address and leave async method
                                     if(incident.date != "" && incident.latitude != 0.0 && incident.longitude != 0.0 && incident.time != "" && incident.patient != "" && incident.attackType != "" && incident.medic == "" && count == 1){
-                                        incident.medic = "kitkat1375@hotmail.com"
+                                        incident.medic = "kitkat1375@hotmail.com" //medic email address
                                         count = count+1
+                                        //add medic email
                                         self.db?.child("incidents/incident").child(key).child("medic").setValue("kitkat1375@hotmail.com")
                                         group.leave()
                                         ref?.removeAllObservers()
@@ -154,6 +159,7 @@ class SystemManager
         return incident
     }
     
+    //Function adds a branch to medics branch with first and last name and email
     func addMedicDetails(firstName: String, lastName: String, email: String)-> Void
     {
         let medic = Medic()
@@ -171,6 +177,7 @@ class SystemManager
         })
     }
     
+    //Add a new branch to actives to as part of the registartion process
     func addActive(secret: String)-> Void
     {
         db = Database.database().reference()

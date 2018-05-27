@@ -22,24 +22,25 @@ class HomeController: UIViewController {
     var db: DatabaseReference?
     var handle:DatabaseHandle?
     
-
+    //Action function called when the sign off button is pressed
     @IBAction func signOff(_ sender: AnyObject)
     {
-        self.systemManager.notWorking(secret: self.secret!)
+        self.systemManager.notWorking(secret: self.secret!) //set medic as not working
         try! Auth.auth().signOut()
         self.performSegue(withIdentifier: "authentication", sender: self)
     }
     
+    //Action method called when user presses the view map
     @IBAction func mapping(_ sender: AnyObject){
 
         var incident = Incident()
-        let group = DispatchGroup()
-        group.enter()
-        incident = systemManager.getIncident(group: group)
-        
+        let group = DispatchGroup() //async object instantiated
+        group.enter() // begin async method
+        incident = systemManager.getIncident(group: group) // instanitate incident by async object to complete
+                                                           // the async method
         group.notify(queue: .main) {
             
-            let latitude: CLLocationDegrees = incident.latitude
+            let latitude: CLLocationDegrees = incident.latitude 
             let longitude: CLLocationDegrees = incident.longitude
             let regionDistance: CLLocationDistance = 0.01
             let coordinates = CLLocationCoordinate2DMake(latitude, longitude)
