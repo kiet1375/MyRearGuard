@@ -84,6 +84,7 @@ class AuthenticationController: UIViewController {
     }
     
     //configuration file for authentication. Each download will only allow one regisration.
+    //However, it has been commented out so markers can do there required work
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -107,7 +108,7 @@ class AuthenticationController: UIViewController {
             
             if(message != ""){
                 secret = message
-                type.removeSegment(at: 1, animated: false)
+                //type.removeSegment(at: 1, animated: false)
             }
         }
     }

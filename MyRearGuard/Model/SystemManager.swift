@@ -72,6 +72,7 @@ class SystemManager
         })
     }
     
+    //Sign off user by setting the created false
     func notWorking(secret: String) -> Void
     {
         db = Database.database().reference()
