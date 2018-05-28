@@ -106,9 +106,11 @@ class AuthenticationController: UIViewController {
                 print("Failed reading from URL: \(fileURL), Error: " + error.localizedDescription)
             }
             
+            //below has been comment out for markers so they can create, update etc.
             if(message != ""){
                 secret = message
                 //type.removeSegment(at: 1, animated: false)
+                
             }
         }
     }
