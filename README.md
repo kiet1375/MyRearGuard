@@ -1,4 +1,4 @@
 # MyRearGuard
 submission version
 
-Please do not open the project with the white background. Use the blue icon, as it is using Firebase.
+Please do not open the project with the blue background. Use the white icon, as it is using Firebase.
